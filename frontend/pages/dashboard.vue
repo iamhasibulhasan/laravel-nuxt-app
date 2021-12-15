@@ -10,7 +10,7 @@
               <ul>
                 <li><nuxt-link :to="{name:'dashboard'}">Dashboard</nuxt-link></li>
                 <li><nuxt-link :to="{name:'dashboard-profile'}">Profile</nuxt-link></li>
-                <li><a href="#">Change Password</a></li>
+
                 <li><a href="#" @click.prevent="logout">Logout</a></li>
               </ul>
             </div>

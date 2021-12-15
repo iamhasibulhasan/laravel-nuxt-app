@@ -19,6 +19,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/vform.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -36,7 +37,6 @@ export default {
     '@nuxtjs/pwa',
 
     // mandatory
-    '@nuxtjs/axios',
     '@nuxtjs/auth-next'
   ],
   //nuxt auth package confi
