@@ -12,11 +12,11 @@
               <form action="" @submit.prevent="userLogin" >
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" class="form-control" name="email" placeholder="Enter Email">
+                    <input type="text" class="form-control" v-model="login.email" name="email" placeholder="Enter Email">
                 </div>
                 <div class="form-group my-4">
                   <label>Password</label>
-                  <input type="password" class="form-control" name="password" placeholder="Enter Password">
+                  <input type="password" class="form-control" v-model="login.password" name="password" placeholder="Enter Password">
                 </div>
                   <div class="form-group d-flex justify-content-between align-items-center">
                     <button type="submit" class="btn btn-success" >Login</button>
@@ -32,6 +32,7 @@
 </template>
 <script>
 export default {
+  auth: 'guest',
   data() {
     return {
       login: {

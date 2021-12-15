@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
     /**
@@ -34,6 +35,32 @@ class AuthController extends Controller
 
         return response()->json(['error' => 'Unauthorized'], 401);
     }
+
+    /**
+     * Get a JWT token via given credentials.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function register(Request $request)
+    {
+        $this->validate($request, [
+            'name'  =>  'required',
+            'email' =>  'required|unique:users,email',
+            'password'  =>  'required|min:6'
+        ]);
+
+        $user = User::create([
+            'name'  =>  $request->name,
+            'email' =>  $request->email,
+            'password'  =>  bcrypt($request->password),
+        ]);
+        $token = auth('api')->login($user);
+        return $this->respondWithToken($token);
+
+    }
+
 
     /**
      * Get the authenticated User

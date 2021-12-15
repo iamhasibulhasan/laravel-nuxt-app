@@ -9,18 +9,18 @@
               <h2>Create an account</h2>
             </div>
             <div class="card-body">
-              <form action="" @submit.prevent="userLogin" >
+              <form action="" @submit.prevent="registerUser" >
                 <div class="form-group">
                   <label>Enter Your Name</label>
-                  <input type="text" class="form-control" name="email" placeholder="Enter Email">
+                  <input type="text" class="form-control" v-model="registerForm.name" name="name" placeholder="Enter Name">
                 </div>
                 <div class="form-group mt-4">
                   <label>Enter Your Email</label>
-                  <input type="text" class="form-control" name="email" placeholder="Enter Email">
+                  <input type="text" class="form-control" v-model="registerForm.email" name="email" placeholder="Enter Email">
                 </div>
                 <div class="form-group my-4">
                   <label>Enter Your Password</label>
-                  <input type="password" class="form-control" name="password" placeholder="Enter Password">
+                  <input type="password" class="form-control" v-model="registerForm.password" name="password" placeholder="Enter Password">
                 </div>
                 <div class="form-group d-flex justify-content-between align-items-center">
                   <button type="submit" class="btn btn-success" >Register</button>
@@ -36,20 +36,22 @@
 </template>
 <script>
 export default {
+  auth: 'guest',
   data() {
     return {
-      login: {
-        email: 'mdhasibulhasan.dev@gmail.com',
-        password: 'asdfghjkl'
+      registerForm: {
+        name:'',
+        email: '',
+        password: ''
       }
     }
   },
   methods: {
-    async userLogin() {
-      // console.log({data:this.login})
+    async registerUser() {
       try {
-        let response = await this.$auth.loginWith('local', { data: this.login });
-        console.log(response);
+        let data = await this.$axios.$post('/auth/register', this.registerForm);
+        console.log(data);
+        await this.$auth.setUserToken(data.access_token);
       } catch (err) {
         console.log(err);
       }

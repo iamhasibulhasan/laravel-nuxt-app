@@ -10,10 +10,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <nuxt-link class="nav-link" :to="{name : 'index'}">Home</nuxt-link>
+              <nuxt-link class="nav-link" v-if="!loggedIn" :to="{name : 'index'}">Home</nuxt-link>
             </li>
             <li class="nav-item">
-              <nuxt-link class="nav-link" :to="{name : 'login'}">Login</nuxt-link>
+              <nuxt-link class="nav-link" v-if="!loggedIn" :to="{name : 'login'}">Login</nuxt-link>
+            </li>
+            <li class="nav-item">
+              <nuxt-link class="nav-link" v-if="!loggedIn" :to="{name : 'register'}">Register</nuxt-link>
+            </li>
+            <li class="nav-item">
+              <nuxt-link class="nav-link" v-if="loggedIn" :to="{name : 'dashboard'}">Dashboard</nuxt-link>
             </li>
           </ul>
           <form class="d-flex">
@@ -34,6 +40,11 @@
 import NuxtLogo from "~/components/NuxtLogo";
 
 export default {
+  computed:{
+    loggedIn(){
+      return this.$store.state.auth.loggedIn;
+    }
+  },
   head: {
     script: [
       {
