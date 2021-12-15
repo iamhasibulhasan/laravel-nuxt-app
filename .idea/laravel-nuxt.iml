@@ -119,6 +119,9 @@
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/phpunit/php-file-iterator" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/phpunit/php-invoker" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/phpunit/php-timer" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/tymon/jwt-auth" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/namshi/jose" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/lcobucci/jwt" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -113,6 +113,9 @@
       <path value="$PROJECT_DIR$/backend/vendor/phpunit/php-file-iterator" />
       <path value="$PROJECT_DIR$/backend/vendor/phpunit/php-invoker" />
       <path value="$PROJECT_DIR$/backend/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/backend/vendor/tymon/jwt-auth" />
+      <path value="$PROJECT_DIR$/backend/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/backend/vendor/lcobucci/jwt" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

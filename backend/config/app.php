@@ -164,7 +164,10 @@ return [
 
         /*
          * Package Service Providers...
+         * Added by Hasibul Hasan
          */
+
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
         /*
          * Application Service Providers...
