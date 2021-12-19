@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
@@ -19,7 +19,7 @@
               <nuxt-link class="nav-link" v-if="!loggedIn" :to="{name : 'register'}">Register</nuxt-link>
             </li>
             <li class="nav-item">
-              <nuxt-link class="nav-link" v-if="loggedIn" :to="{name : 'dashboard'}">Dashboard</nuxt-link>
+              <nuxt-link class="nav-link" v-if="loggedIn" :to="{name : 'dashboard'}">{{user.name}}</nuxt-link>
             </li>
           </ul>
           <form class="d-flex">
@@ -43,6 +43,9 @@ export default {
   computed:{
     loggedIn(){
       return this.$store.state.auth.loggedIn;
+    },
+    user(){
+      return this.$store.state.auth.user;
     }
   },
   head: {

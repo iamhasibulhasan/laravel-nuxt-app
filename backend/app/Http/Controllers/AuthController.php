@@ -17,7 +17,21 @@ class AuthController extends Controller
     {
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
-
+    /**
+     * Validate the user login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|string',
+            'password' => 'required|string',
+        ]);
+    }
     /**
      * Get a JWT token via given credentials.
      *
@@ -27,13 +41,20 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $this->validateLogin($request);
+        $credentials = request(['email', 'password']);
 
-        if ($token = auth()->guard('api')->attempt($credentials)) {
-            return $this->respondWithToken($token);
+        if (!$token = auth('api')->attempt($credentials)) {
+            return response()->json([
+                'errors' => [
+                    'account' => [
+                        "Invalid phone number or password"
+                    ]
+                ]
+            ], 422);
         }
 
-        return response()->json(['error' => 'Unauthorized'], 401);
+        return $this->respondWithToken($token);
     }
 
     /**
@@ -123,7 +144,7 @@ class AuthController extends Controller
     /**
      * Update User Profile
      */
-    public function profileUpdate(Request $request)
+    public function profile(Request $request)
     {
         $user = auth('api')->user();
 
@@ -149,4 +170,5 @@ class AuthController extends Controller
             'user' => $user
         ], 200);
     }
+
 }

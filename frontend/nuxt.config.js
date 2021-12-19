@@ -20,7 +20,10 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/vform.js',
+    '~/plugins/toast.js',
+    // {src: '~/plugins/vform.js', mode: 'server'},
   ],
+
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -56,9 +59,17 @@ export default {
         endpoints: {
           login: { url: '/auth/login', method: 'post' },
           logout: { url: '/auth/logout', method: 'post' },
+          register: { url: '/auth/register', method: 'post' },
+          profile: { url: '/auth/profile', method: 'post' },
           user: { url: '/auth/me', method: 'post' }
         }
       }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/'
     }
   },
 

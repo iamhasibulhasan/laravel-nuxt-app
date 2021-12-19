@@ -13,17 +13,20 @@
                 <div class="form-group">
                   <label>Enter Your Name</label>
                   <input type="text" class="form-control" v-model="registerForm.name" name="name" placeholder="Enter Name" :class="{ 'is-invalid': registerForm.errors.has('name') }">
-                  <has-error :form="registerForm" field="name"></has-error>
+<!--                  <has-error :form="registerForm" field="name"></has-error>-->
+                  <div v-if="registerForm.errors.has('name')" v-html="registerForm.errors.get('name')" />
                 </div>
                 <div class="form-group mt-4">
                   <label>Enter Your Email</label>
                   <input type="text" class="form-control" v-model="registerForm.email" name="email" placeholder="Enter Email" :class="{ 'is-invalid': registerForm.errors.has('email') }">
-                  <has-error :form="registerForm" field="email"></has-error>
+<!--                  <has-error :form="registerForm" field="email"></has-error>-->
+                  <div v-if="registerForm.errors.has('email')" v-html="registerForm.errors.get('email')" />
                 </div>
                 <div class="form-group my-4">
                   <label>Enter Your Password</label>
                   <input type="password" class="form-control" v-model="registerForm.password" name="password" placeholder="Enter Password" :class="{ 'is-invalid': registerForm.errors.has('password') }">
-                  <has-error :form="registerForm" field="password"></has-error>
+<!--                  <has-error :form="registerForm" field="password"></has-error>-->
+                  <div v-if="registerForm.errors.has('password')" v-html="registerForm.errors.get('password')" />
                 </div>
                 <div class="form-group d-flex justify-content-between align-items-center">
                   <button type="submit" class="btn btn-success" >Register</button>
@@ -38,12 +41,12 @@
   </div>
 </template>
 <script>
-
+import Form from 'vform';
 export default {
   auth: 'guest',
   data() {
     return {
-      registerForm: this.$vform(
+      registerForm: new Form(
         {
           name:'',
           email: '',
@@ -55,7 +58,8 @@ export default {
   methods: {
     async registerUser() {
       try {
-        let data = await this.$axios.$post('/auth/register', this.registerForm);
+        // let data = await this.registerForm.post('/auth/register', this.registerForm);
+        let data = await this.registerForm.post('/auth/register',);
         console.log(data);
         await this.$auth.setUserToken(data.access_token);
       } catch (err) {
