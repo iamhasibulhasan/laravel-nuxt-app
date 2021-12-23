@@ -123,6 +123,7 @@
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/namshi/jose" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/lcobucci/jwt" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/laravel/breeze" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/yajra/laravel-datatables-oracle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

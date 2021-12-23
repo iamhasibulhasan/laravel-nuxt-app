@@ -117,6 +117,7 @@
       <path value="$PROJECT_DIR$/backend/vendor/namshi/jose" />
       <path value="$PROJECT_DIR$/backend/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/backend/vendor/laravel/breeze" />
+      <path value="$PROJECT_DIR$/backend/vendor/yajra/laravel-datatables-oracle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
