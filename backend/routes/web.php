@@ -33,9 +33,6 @@ Route::get('/cat-delete/{id}', [App\Http\Controllers\CategoryController::class, 
 Route::get('/cat-edit/{id}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('cat.edit');
 Route::post('/cat-update/{id}', [App\Http\Controllers\CategoryController::class, 'update'])->name('cat.update');
 
-//Admin Product control
-Route::get('/dashboard/product', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
-Route::get('/dashboard/add-product', [App\Http\Controllers\ProductController::class, 'addNewProduct'])->name('product.add');
 
 
 //Admin Brand control
@@ -53,6 +50,15 @@ Route::get('/tag-status/{id}', [App\Http\Controllers\TagController::class, 'stat
 Route::get('/tag-delete/{id}', [App\Http\Controllers\TagController::class, 'destroy'])->name('tag.delete');
 Route::get('/tag-edit/{id}', [App\Http\Controllers\TagController::class, 'edit'])->name('tag.edit');
 Route::post('/tag-update/{id}', [App\Http\Controllers\TagController::class, 'update'])->name('tag.update');
+
+
+//Admin product control
+Route::post('/dashboard/addproduct', [App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
+Route::get('/dashboard/product', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
+Route::get('/dashboard/product/trash', [App\Http\Controllers\ProductController::class, 'trashView'])->name('product.trashview');
+Route::get('/dashboard/add-product', [App\Http\Controllers\ProductController::class, 'addNewProduct'])->name('product.add');
+Route::get('/dashboard/product-trash/{id}', [App\Http\Controllers\ProductController::class, 'trash'])->name('product.trash');
+Route::get('/dashboard/product-delete/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
 
 
 

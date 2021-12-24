@@ -19,6 +19,7 @@
             $('#all_products_tbl').DataTable();
             $('#add_new_brand_tbl').DataTable();
             $('#add_new_tag_tbl').DataTable();
+            $('#all_trash_tbl').DataTable();
         } );
 
 
@@ -557,6 +558,166 @@
             });
         });
 
+
+//        Product Img Load
+        $('#product_img').change(function (e){
+            let img_url = URL.createObjectURL(e.target.files[0]);
+            $('#product_img_load').removeAttr('src').attr('src', img_url);
+        });
+
+//        Add new product
+        $(document).on('submit', '#add_new_product_form', function (e){
+            e.preventDefault();
+            $.ajax({
+                url: '/dashboard/addproduct',
+                method: 'POST',
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                success: function (data){
+                    console.log(data);
+                    if(data == 1){
+                        Swal.fire({
+                            toast:true,
+                            position: 'top-end',
+                            icon: 'success',
+                            title: "Product publish successful!",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        location.reload();
+                    }else {
+                        Swal.fire({
+                            toast:true,
+                            position: 'top-end',
+                            icon: 'error',
+                            title: data,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                }
+            });
+        });
+        $('#all_products_tbl').DataTable({
+            processing:true,
+            serverSide:true,
+            ajax: {
+                url: '/dashboard/product'
+            },
+            columns:[
+                {
+                    data:'id',
+                    name:'id'
+                },
+                {
+                    data:'name',
+                    name:'name'
+                },
+                {
+                    data: 'category',
+                    name: 'category'
+                },
+                {
+                    data:'action',
+                    name:'action'
+                }
+            ]
+        });
+
+
+//        Product move to trash
+        $(document).on('click', '#product_trash_btn', function (e){
+            e.preventDefault();
+            let id = $(this).attr('trash-product-id');
+            // alert(id);
+            Swal.fire({
+                title: 'Are you sure?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/dashboard/product-trash/'+ id,
+                        success:function (data){
+                            Swal.fire({
+                                toast:true,
+                                position: 'top-end',
+                                icon: 'success',
+                                title: data,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            $('#all_products_tbl').DataTable().ajax.reload();
+                            $('#all_trash_tbl').DataTable().ajax.reload();
+                        }
+                    });
+
+                }
+            })
+
+        });
+        //        Product trash table
+        $('#all_trash_tbl').DataTable({
+            processing:true,
+            serverSide:true,
+            ajax: {
+                url: '/dashboard/product/trash'
+            },
+            columns:[
+                {
+                    data:'id',
+                    name:'id'
+                },
+                {
+                    data:'name',
+                    name:'name'
+                },
+                {
+                    data:'action',
+                    name:'action'
+                }
+            ]
+        });
+
+        //        Product delete
+        $(document).on('click', '#product_delete_btn', function (e){
+            e.preventDefault();
+            let id = $(this).attr('del-product-id');
+            // alert(id);
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/dashboard/product-delete/'+ id,
+                        success:function (data){
+                            Swal.fire({
+                                toast:true,
+                                position: 'top-end',
+                                icon: 'success',
+                                title: data+' has been deleted',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            $('#all_products_tbl').DataTable().ajax.reload();
+                            $('#all_trash_tbl').DataTable().ajax.reload();
+                        }
+                    });
+
+                }
+            })
+
+        });
 
 
 

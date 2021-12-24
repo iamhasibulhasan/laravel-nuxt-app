@@ -18,6 +18,7 @@
                         <li><a href="{{route('product.add')}}"> Add new product </a></li>
                         <li><a href="{{route('tag.index')}}"> Tags </a></li>
                         <li><a href="{{route('brand.index')}}"> Brands </a></li>
+                        <li><a href="{{route('product.trashview')}}"> Trash </a></li>
                     </ul>
                 </li>
             </ul>

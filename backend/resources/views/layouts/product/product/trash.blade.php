@@ -14,25 +14,23 @@
                         <div class="col-sm-12">
                             <h3 class="page-title">Welcome {{ Auth::user()->name }}!</h3>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item active">All products</li>
+                                <li class="breadcrumb-item active">All trash products</li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <!-- /Page Header -->
                 <a href="{{route('product.add')}}" type="button" class="btn btn-light btn-sm">Add new products</a>
-                <a href="{{route('product.trashview')}}" type="button" class="btn btn-light btn-sm">Trash</a><br><br>
+                <a href="{{route('product.index')}}" type="button" class="btn btn-light btn-sm">All products</a><br><br>
 
-
-                {{--                All products show--}}
+                {{--                All trash products show--}}
                 <div class="row card">
                     <div class="col-12 card-body">
-                        <table id="all_products_tbl" class="display">
+                        <table id="all_trash_tbl" class="display">
                             <thead>
                             <tr>
                                 <th>#SI</th>
                                 <th>Name</th>
-                                <th>Category</th>
                                 <th>Action</th>
                             </tr>
                             </thead>

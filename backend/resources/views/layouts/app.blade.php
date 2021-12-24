@@ -14,7 +14,8 @@
 
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="{{asset('admin/assets/css/font-awesome.min.css')}}">
-
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="{{asset('admin/assets/css/select2.min.css')}}">
     <!-- Feathericon CSS -->
     <link rel="stylesheet" href="{{asset('admin/assets/css/feathericon.min.css')}}">
 
@@ -50,6 +51,11 @@
 <!-- CK Editor -->
 {{--<script src="{{asset('admin/assets/js/ckeditor.js')}}"></script>--}}
 <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+<!-- Slimscroll JS -->
+<script src="{{asset('admin/assets/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+
+<!-- Select2 JS -->
+<script src="{{asset('admin/assets/js/select2.min.js')}}"></script>
 <!-- Sweet alert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Custom JS -->
