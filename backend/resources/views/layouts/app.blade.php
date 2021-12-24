@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Doccure - Register</title>
+    <title>Admin- Dashboard</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('admin/assets/img/favicon.png')}}">
@@ -43,12 +43,13 @@
 <!-- Bootstrap Core JS -->
 <script src="{{asset('admin/assets/js/popper.min.js')}}"></script>
 <script src="{{asset('admin/assets/js/bootstrap.min.js')}}"></script>
-<script src="https://kit.fontawesome.com/20b15bd663.js" crossorigin="anonymous"></script>
+<script src="{{asset('admin/assets/js/fontawesome-kit.js')}}"></script>
 
 <!-- Data tables JS -->
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-
-
+<script src="{{asset('admin/assets/js/jquery.dataTables.js')}}"></script>
+<!-- CK Editor -->
+{{--<script src="{{asset('admin/assets/js/ckeditor.js')}}"></script>--}}
+<script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
 <!-- Sweet alert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Custom JS -->
