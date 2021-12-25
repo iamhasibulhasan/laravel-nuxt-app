@@ -53,7 +53,7 @@ export default {
       // console.log({data:this.login})
       try {
         // let response = await this.$auth.loginWith('local', { data: this.login });
-        let data = await this.login.post('/auth/login',);
+        let data = await this.login.post('api/auth/login',);
         await this.$auth.setUserToken(data.data.access_token);
 
         this.$toast.success({

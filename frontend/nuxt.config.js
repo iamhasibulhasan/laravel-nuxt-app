@@ -57,11 +57,11 @@ export default {
           // autoFetch: true
         },
         endpoints: {
-          login: { url: '/auth/login', method: 'post' },
-          logout: { url: '/auth/logout', method: 'post' },
-          register: { url: '/auth/register', method: 'post' },
-          profile: { url: '/auth/profile', method: 'post' },
-          user: { url: '/auth/me', method: 'post' }
+          login: { url: 'api/auth/login', method: 'post' },
+          logout: { url: 'api/auth/logout', method: 'post' },
+          register: { url: 'api/auth/register', method: 'post' },
+          profile: { url: 'api/auth/profile', method: 'post' },
+          user: { url: 'api/auth/me', method: 'post' },
         }
       }
     },
@@ -75,7 +75,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-      baseURL: 'http://127.0.0.1:8000/api',
+      baseURL: 'http://127.0.0.1:8000/',
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

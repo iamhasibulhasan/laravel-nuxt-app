@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\APIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,6 @@ Route::group([
     Route::post('profile', [AuthController::class, 'profile']);
 
 });
+
+Route::get('products', [APIController::class, 'allProducts'])->name('products');
+
